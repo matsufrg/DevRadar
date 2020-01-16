@@ -3,6 +3,21 @@ const Dev = require('../models/Dev');
 
 module.exports = {
 
+    async update (req, res ) {
+        
+        const { techs, latitude, longitude } = req.body;
+        
+        let dev = await Dev.findOneAndUpdate({github_username: req.query.github_username}, {
+            avatar_url,
+            bio,
+            techs: techsArray,
+            latitude,
+            longitude
+        });
+
+        console.log(dev);
+    },
+
     async index(req,res) {
         const devs = await Dev.find();
 
